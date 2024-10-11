@@ -17,7 +17,9 @@ SRCS = ft_bzero.c \
 			 ft_tolower.c \
 			 ft_strchr.c \
 			 ft_strrchr.c \
-			 ft_strncmp.c
+			 ft_strncmp.c \
+			 ft_memchr.c \
+			 ft_memcmp.c
 OBJDIR = obj
 OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
 
