@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexanfe <alexanfe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 20:04:07 by alexanfe          #+#    #+#             */
-/*   Updated: 2024/10/11 20:04:10 by alexanfe         ###   ########.fr       */
+/*   Created: 2024/10/12 14:54:03 by alexanfe          #+#    #+#             */
+/*   Updated: 2024/10/12 14:59:23 by alexanfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strdup(const char *s)
 {
-	const unsigned char	*ptr_s1;
-	const unsigned char	*ptr_s2;
+	size_t		src_len;
+	size_t		i;
+	char		*dst;
 
-	ptr_s1 = (unsigned char *)s1;
-	ptr_s2 = (unsigned char *)s2;
-	while (n > 0)
+	src_len = ft_strlen(s);
+	dst = malloc(sizeof(char) * src_len + 1);
+	i = 0;
+	while (s[i])
 	{
-		if (*ptr_s1 != *ptr_s2)
-			return (*ptr_s1 - *ptr_s2);
-		ptr_s1++;
-		ptr_s2++;
-		n--;
+		dst[i] = s[i];
+		i++;
 	}
-	return (0);
+	dst[i] = '\0';
+	return (dst);
 }

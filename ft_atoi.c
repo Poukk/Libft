@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexanfe <alexanfe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 20:04:07 by alexanfe          #+#    #+#             */
-/*   Updated: 2024/10/11 20:04:10 by alexanfe         ###   ########.fr       */
+/*   Created: 2024/10/12 13:50:24 by alexanfe          #+#    #+#             */
+/*   Updated: 2024/10/12 13:50:31 by alexanfe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+static int	ft_isspace(int c)
 {
-	const unsigned char	*ptr_s1;
-	const unsigned char	*ptr_s2;
+	return (c == ' ' || c == '\f' || c == '\n'
+		|| c == '\r' || c == '\t' || c == '\v');
+}
 
-	ptr_s1 = (unsigned char *)s1;
-	ptr_s2 = (unsigned char *)s2;
-	while (n > 0)
+int	ft_atoi(const char *nptr)
+{
+	int	result;
+	int	sign;
+
+	sign = 1;
+	result = 0;
+	while (ft_isspace(*nptr))
+		nptr++;
+	if (*nptr == '-' || *nptr == '+')
 	{
-		if (*ptr_s1 != *ptr_s2)
-			return (*ptr_s1 - *ptr_s2);
-		ptr_s1++;
-		ptr_s2++;
-		n--;
+		if (*nptr == '-')
+			sign = -1;
+		nptr++;
 	}
-	return (0);
+	while (ft_isdigit(*nptr))
+	{
+		result = result * 10 + (*nptr - '0');
+		nptr++;
+	}
+	return (sign * result);
 }
