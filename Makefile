@@ -24,7 +24,8 @@ SRCS = ft_bzero.c \
 			 ft_atoi.c \
 			 ft_calloc.c \
 			 ft_strdup.c \
-			 ft_substr.c
+			 ft_substr.c \
+			 ft_strjoin.c
 OBJDIR = obj
 OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
 
