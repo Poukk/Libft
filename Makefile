@@ -28,7 +28,7 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 bonus: $(OBJDIR) $(OBJS) $(OBJS_BONUS)
-	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+	ar rcs $(NAME) $(OBJS_BONUS)
 
 $(OBJDIR)/%.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
