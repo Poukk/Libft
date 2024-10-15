@@ -13,11 +13,19 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	size_t	s_len;
+	size_t	alloc_len;
 	char	*substring;
 
-	substring = malloc(sizeof(char) * len + 1);
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_strdup(""));
+	alloc_len = s_len - start;
+	if (alloc_len > len)
+		alloc_len = len;
+	substring = malloc(alloc_len + 1);
 	if (!substring)
 		return (NULL);
-	ft_strlcpy(substring, s + start, len + 1);
+	ft_strlcpy(substring, s + start, alloc_len + 1);
 	return (substring);
 }
