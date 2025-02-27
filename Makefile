@@ -1,44 +1,84 @@
+#------------------ Config -----------------#
 NAME = libft.a
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-
 SRCS = \
-	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
-	ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c \
-	ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
-	ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
-	ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
-	ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_itoa.c
+ctype/ft_isalnum.c                            \
+ctype/ft_isalpha.c                            \
+ctype/ft_isascii.c                            \
+ctype/ft_isdigit.c                            \
+ctype/ft_isprint.c                            \
+ctype/ft_tolower.c                            \
+ctype/ft_toupper.c                            \
+io/ft_putchar_fd.c                            \
+io/ft_putendl_fd.c                            \
+io/ft_putnbr_fd.c                             \
+io/ft_putstr_fd.c                             \
+linked_list/ft_lstadd_back_bonus.c            \
+linked_list/ft_lstadd_front_bonus.c           \
+linked_list/ft_lstclear_bonus.c               \
+linked_list/ft_lstdelone_bonus.c              \
+linked_list/ft_lstiter_bonus.c                \
+linked_list/ft_lstlast_bonus.c                \
+linked_list/ft_lstmap_bonus.c                 \
+linked_list/ft_lstnew_bonus.c                 \
+linked_list/ft_lstsize_bonus.c                \
+stdlib/ft_atoi.c                              \
+stdlib/ft_calloc.c                            \
+stdlib/ft_itoa.c                              \
+string/ft_bzero.c                             \
+string/ft_memchr.c                            \
+string/ft_memcmp.c                            \
+string/ft_memcpy.c                            \
+string/ft_memmove.c                           \
+string/ft_memset.c                            \
+string/ft_split.c                             \
+string/ft_strchr.c                            \
+string/ft_strdup.c                            \
+string/ft_striteri.c                          \
+string/ft_strjoin.c                           \
+string/ft_strlcat.c                           \
+string/ft_strlcpy.c                           \
+string/ft_strlen.c                            \
+string/ft_strmapi.c                           \
+string/ft_strncmp.c                           \
+string/ft_strnstr.c                           \
+string/ft_strrchr.c                           \
+string/ft_strtrim.c                           \
+string/ft_substr.c                            \
 
-SRCS_BONUS = \
-	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
-	ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-	ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c \
-
+#---------------- Variables ----------------#
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 OBJDIR = obj
-OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
-OBJS_BONUS = $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS_BONUS))
+OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
+INCLUDES = -I./include
 
-all: $(OBJDIR) $(NAME)
+GREEN = $$(tput setaf 2)
+RESET = $$(tput sgr0)
+
+#----------------- Targets ----------------#
+all: $(NAME)
 
 $(OBJDIR):
-	mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR)
+	@echo "$(GREEN)Created libft object directory$(RESET)"
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJDIR) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
+	@echo "$(GREEN)$(NAME) created successfully!$(RESET)"
 
-bonus: $(OBJDIR) $(OBJS) $(OBJS_BONUS)
-	ar rcs $(NAME) $(OBJS_BONUS)
-
-$(OBJDIR)/%.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@echo "Compiling $<..."
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -rf $(OBJDIR)
+	@rm -rf $(OBJDIR)
+	@echo "$(GREEN)Cleaned object files$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(GREEN)Cleaned library$(RESET)"
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
