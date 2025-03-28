@@ -44,6 +44,7 @@ string/ft_strnstr.c                           \
 string/ft_strrchr.c                           \
 string/ft_strtrim.c                           \
 string/ft_substr.c                            \
+string/count_words.c                          \
 ft_printf/printf_number.c                     \
 ft_printf/printf_hex.c                        \
 ft_printf/printf_char.c                       \
