@@ -48,6 +48,8 @@ ft_printf/printf_number.c                     \
 ft_printf/printf_hex.c                        \
 ft_printf/printf_char.c                       \
 ft_printf/printf.c                            \
+get_next_line/get_next_line.c                 \
+get_next_line/utils.c                         \
 
 #---------------- Variables ----------------#
 CC = cc
