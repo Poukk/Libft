@@ -6,6 +6,8 @@ ctype/ft_isalpha.c                            \
 ctype/ft_isascii.c                            \
 ctype/ft_isdigit.c                            \
 ctype/ft_isprint.c                            \
+ctype/ft_isxdigit.c                           \
+ctype/ft_isspace.c                            \
 ctype/ft_tolower.c                            \
 ctype/ft_toupper.c                            \
 io/ft_putchar_fd.c                            \
@@ -23,6 +25,7 @@ linked_list/ft_lstnew_bonus.c                 \
 linked_list/ft_lstsize_bonus.c                \
 stdlib/ft_atoi.c                              \
 stdlib/ft_calloc.c                            \
+stdlib/ft_strtol.c                            \
 stdlib/ft_itoa.c                              \
 string/ft_bzero.c                             \
 string/ft_memchr.c                            \
